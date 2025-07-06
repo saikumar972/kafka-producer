@@ -15,7 +15,6 @@ public class PaytmController {
         kafkaService.sendPlainMessage();
         return "Message sent to queue";
     }
-
     @PostMapping("/request2")
     public String sendPaymentAsString(@RequestBody Payment payment) throws JsonProcessingException{
         return kafkaService.sendObjectAsString(payment);
@@ -24,6 +23,12 @@ public class PaytmController {
     @PostMapping("/request3")
     public Payment payment2(@RequestBody Payment payment) {
        return kafkaService.sendPaymentObject(payment);
+    }
+
+    @GetMapping("/request4")
+    public String sendPlainMessages(){
+        kafkaService.sendPlainMessages();
+        return "Messages sent to queue";
     }
 
 }

@@ -26,6 +26,10 @@ public class KafkaConfiguration {
         return new NewTopic("payment3",3,(short)1);
     }
     @Bean
+    public NewTopic createTopic4(){
+        return new NewTopic("payment4",3,(short)1);
+    }
+    @Bean
     public Map<String,Object> producerConfig(){
         Map<String,Object> map=new HashMap<>();
         map.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,"localhost:9092");

@@ -22,6 +22,8 @@ public class KafkaService {
     String topic2;
     @Value("${paytm.topic.name3}")
     String topic3;
+    @Value("${paytm.topic.name4}")
+    String topic4;
     private static final ObjectMapper objectMapper=new ObjectMapper();
 
     public void sendPlainMessage(){
@@ -50,4 +52,11 @@ public class KafkaService {
         return payment;
     }
 
+    public void sendPlainMessages() {
+        String[] stringArray = new String[3];
+        for (int i = 0; i < 3; i++) {
+            stringArray[i] = "plain message " + i;
+            kafkaTemplate.send(topic4,i,null,stringArray[i]);
+        }
+    }
 }
